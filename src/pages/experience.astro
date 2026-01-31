@@ -1,0 +1,65 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { cvData } from '../data/cv.js';
+---
+<html lang="en">
+<head>
+  <BaseHead title="Experience | Elisa Billard" description="Professional trajectory." />
+</head>
+<body class="bg-white text-slate-900">
+  <Header />
+  <main class="max-w-3xl mx-auto px-6 py-12">
+    <h1 class="text-2xl font-bold mb-10 text-slate-900">Professional Experience</h1>
+    
+    <div class="relative space-y-12 before:absolute before:inset-0 before:ml-1 before:-translate-x-px before:h-full before:w-0.5 before:bg-gradient-to-b before:from-slate-200 before:via-slate-200 before:to-transparent">
+      {cvData.experience.map(job => (
+        <div class="relative pl-10 group">
+          <div class="absolute left-0 top-1 w-2.5 h-2.5 bg-blue-500 rounded-full border-2 border-white ring-2 ring-slate-50 shadow-sm z-10"></div>
+          
+          <div class="flex items-start gap-4">
+            {job.logo && (
+              <div class="shrink-0 w-15 h-15 rounded bg-white border border-slate-100 p-1 flex items-center justify-center shadow-sm overflow-hidden">
+                <img src={job.logo} alt={job.company} class="max-w-full max-h-full object-contain" />
+              </div>
+            )}
+
+            <div class="flex-1">
+              <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 mb-1">
+                <h3 class="text-lg font-bold text-slate-900 leading-tight">{job.title}</h3>
+                <span class="text-[10px] font-mono text-slate-400 uppercase tracking-widest">{job.date}</span>
+              </div>
+              
+              <div class="text-sm font-semibold text-blue-600 mb-2 uppercase tracking-tight">
+                {job.company} <span class="text-slate-300 mx-1">•</span> {job.location}
+              </div>
+              
+              <p class="text-sm text-slate-500 leading-relaxed mb-4">{job.desc}</p>
+
+              <div class="flex flex-wrap gap-3">
+                {/* Case 1: Local PDF Report */}
+                {job.report && (
+                  <a href={`/${job.report}`} target="_blank" class="inline-flex items-center gap-2 text-[11px] font-bold text-slate-600 hover:text-blue-600 no-underline bg-slate-50 px-3 py-1.5 rounded border border-slate-200 transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                    VIEW PROJECT REPORT
+                  </a>
+                )}
+
+                {/* Case 2: External Paper Link */}
+                {job.link && (
+                  <a href={job.link} target="_blank" class="inline-flex items-center gap-2 text-[11px] font-bold text-blue-600 hover:text-blue-800 no-underline bg-blue-50/50 px-3 py-1.5 rounded border border-blue-100 transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    VIEW PAPER
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </main>
+  <Footer />
+</body>
+</html>

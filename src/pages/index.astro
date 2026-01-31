@@ -1,51 +1,80 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
-import { cvData } from '../data/cv.js'; // Import your data
+import Footer from '../components/Footer.astro';
+import { cvData } from '../data/cv.js';
 ---
-
-<!doctype html>
 <html lang="en">
-    <head>
-        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    </head>
-    <body>
-        <Header />
-        <main class="max-w-3xl mx-auto px-4 py-12">
-            <section class="mb-16">
-                <h1 class="text-4xl font-bold text-gray-900 mb-2">{cvData.name}</h1>
-                <p class="text-xl text-blue-700 font-medium mb-6">{cvData.tagline}</p>
-                <p class="text-gray-700 leading-relaxed text-lg">
-                    I am a master student at <strong>EPFL</strong>, specialized in <strong>Biological Data Science</strong>. 
-                    I aim to integrate my knowledge in oncology or neuroscience with deep learning to enhance biomedical research. 
-                    Currently working on virtual staining from Raman spectroscopy images at the <strong>University of Cambridge</strong>.
-                </p>
-            </section>
+<head><BaseHead title="Elisa Billard" description="PhD Candidate Portfolio" /></head>
+<body class="bg-white text-slate-900">
+  <Header />
+  <main class="max-w-3xl mx-auto px-6 py-12">
+    
+    <div class="flex flex-col md:flex-row items-center md:items-start gap-10 mb-16">
+      <div class="shrink-0">
+        <img 
+          src="/profile.jpg" 
+          alt="Elisa Billard" 
+          class="w-32 h-32 md:w-44 md:h-44 rounded-2xl object-cover border border-slate-100 shadow-sm"
+        />
+      </div>
 
-            <section class="mb-16">
-                <h2 class="text-2xl font-bold border-b-2 border-blue-100 pb-2 mb-8">Current Activity</h2>
-                {cvData.experience.map(item => (
-                    <div class="mb-10">
-                        <div class="flex justify-between items-baseline">
-                            <h3 class="text-lg font-bold text-gray-800">{item.title}</h3>
-                            <span class="text-sm text-gray-500 font-mono">{item.date}</span>
-                        </div>
-                        <p class="text-blue-600 font-medium mb-2">{item.company}</p>
-                        <p class="text-gray-600 leading-snug">{item.description}</p>
-                    </div>
-                ))}
-            </section>
+      <div class="text-center md:text-left flex-1">
+        <h1 class="text-3xl font-bold text-slate-900 mb-1">{cvData.name}</h1>
+        <p class="text-sm font-bold text-blue-600 mb-6">{cvData.tagline}</p>
+        
+        <div class="space-y-4 text-slate-600 leading-relaxed text-[17px]">
+          <p>
+            I am a Master’s student in <strong>Life Science Engineering at EPFL</strong>, specializing in Biological Data Science. 
+            Currently, I am conducting my research at the <strong>University of Cambridge</strong> within Pietro Liò’s Computer Lab.
+          </p>
+          
+          <p>
+            I am actively <strong>seeking a PhD position</strong> starting in 2026.  I aim to integrate my knowledge in oncology and omics
+             with my programming skills to enhance biomedical research.
+          </p>
+        </div>
+      </div>
+    </div>
 
-            <section class="bg-slate-50 p-8 rounded-2xl mb-16">
-                <h2 class="text-2xl font-bold mb-4">Selected Publication</h2>
-                <p class="italic text-gray-800">
-                    "PhytClust: efficient and optimal node clustering in phylogenetic trees."
-                </p>
-                <p class="text-sm text-gray-500 mt-2">Ganesan, K., Billard, E., et al. (2025)</p>
-            </section>
-        </main>
-        <Footer />
-    </body>
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 text-slate-900 border-b border-slate-100 pb-2 text-center md:text-left">Current Research</h2>
+      
+      <div class="relative flex items-start gap-6 pl-6 border-l-2 border-slate-100 bg-slate-50/50 p-6 rounded-r-xl group">
+        <div class="shrink-0 hidden sm:block">
+          <div class="w-25 h-25 bg-white rounded-lg border border-slate-100 p-2 flex items-center justify-center shadow-sm">
+            <img 
+              src="/logos/secondary-logo-stacked.png" 
+              alt="University of Cambridge" 
+              class="max-w-full max-h-full object-contain" 
+            />
+          </div>
+        </div>
+
+        <div class="flex-1">
+          <span class="text-sm font-bold text-blue-600 mb-6">Master Thesis | Cambridge</span>
+          <p class="space-y-4 text-slate-600 leading-relaxed text-[17px]">
+            {cvData.thesis}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="flex flex-col sm:flex-row justify-center md:justify-start items-center gap-4">
+      <a 
+        href="mailto:elisabillard1905@gmail.com" 
+        class="w-full sm:w-auto text-center border-2 border-slate-200 text-slate-700 px-8 py-3 rounded-full font-bold hover:bg-slate-50 hover:border-slate-300 hover:-translate-y-1 transition-all duration-300 no-underline"      >
+        Contact Me
+      </a>
+      
+      <a 
+        href="/CV_Elisa_Billard_Dec_2025.pdf" 
+        class="w-full sm:w-auto text-center border-2 border-slate-200 text-slate-700 px-8 py-3 rounded-full font-bold hover:bg-slate-50 hover:border-slate-300 hover:-translate-y-1 transition-all duration-300 no-underline"      >
+        Download CV
+      </a>
+    </div>
+
+  </main>
+  <Footer />
+</body>
 </html>

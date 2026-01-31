@@ -1,0 +1,93 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { cvData } from '../data/cv.js';
+---
+
+<html lang="en">
+<head>
+    <BaseHead 
+        title="Skills | Elisa Billard" 
+        description="Technical stack and language proficiency in Biological Data Science." 
+    />
+</head>
+<body class="bg-white text-slate-900">
+    <Header />
+    <main class="max-w-3xl mx-auto px-6 py-12">
+        
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold mb-8 text-slate-900 border-b border-slate-100 pb-2">Programming & Dev</h2>
+            <div class="relative pl-6 border-l-2 border-slate-100 space-y-4">
+                <div class="flex flex-wrap gap-2">
+                    {cvData.skills.programming.map((skill) => (
+                        <span class="px-3 py-1 bg-slate-50 border border-slate-200 rounded text-xs font-mono text-slate-600 hover:border-blue-400 transition-colors">
+                            {skill}
+                        </span>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold mb-8 text-slate-900 border-b border-slate-100 pb-2">Scientific Domains</h2>
+            <div class="space-y-8">
+                <div class="relative pl-6 border-l-2 border-slate-100 group">
+                    <h3 class="text-lg font-bold text-slate-900 leading-tight">Computational</h3>
+                    <p class="text-sm text-slate-500 mt-2 leading-relaxed">
+                        Deep Learning (CycleGANs), Spectral Pathology, Phylogenetic Analysis, WES/RNA-seq pipelines.
+                    </p>
+                </div>
+                <div class="relative pl-6 border-l-2 border-slate-100 group">
+                    <h3 class="text-lg font-bold text-slate-900 leading-tight">Biological</h3>
+                    <p class="text-sm text-slate-500 mt-2 leading-relaxed">
+                        Oncology, Neuroscience, Protein Engineering, Cell & Membrane Biology.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold mb-8 text-slate-900 border-b border-slate-100 pb-2">Languages</h2>
+            <div class="relative pl-6 border-l-2 border-slate-100">
+                <div class="flex flex-wrap gap-10">
+                    {cvData.skills.languages.map((lang) => (
+                        <div class="group">
+                            <p class="text-sm font-bold text-slate-800 group-hover:text-blue-600 transition-colors">{lang.split(' ')[0]}</p>
+                            <p class="text-[10px] text-slate-400 font-mono uppercase tracking-widest">{lang.split(' ')[1]}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="text-2xl font-bold mb-8 text-slate-900 border-b border-slate-100 pb-2">Beyond Research</h2>
+            <div class="space-y-6 mb-8">
+                <div class="relative pl-6 border-l-2 border-slate-100">
+                    <div class="flex justify-between items-baseline">
+                        <h3 class="text-sm font-bold text-slate-800">Student Assistant, Applied Data Analysis (EPFL)</h3>
+                        <span class="text-[10px] font-mono text-slate-400 uppercase">2024 — 2025</span>
+                    </div>
+                </div>
+
+                <div class="relative pl-6 border-l-2 border-slate-100">
+                    <div class="flex justify-between items-baseline">
+                        <h3 class="text-sm font-bold text-slate-800">English and Math Teacher, GPA</h3>
+                        <span class="text-[10px] font-mono text-slate-400 uppercase">2022 — 2023</span>
+                    </div>
+                </div>
+
+                <div class="relative pl-6 border-l-2 border-slate-100">
+                    <div class="flex justify-between items-baseline">
+                        <h3 class="text-sm font-bold text-slate-800">Active Member, Polyquity</h3>
+                        <span class="text-[10px] font-mono text-slate-400 uppercase">2021 — 2022</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <Footer />
+</body>
+</html>
