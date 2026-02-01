@@ -8,10 +8,10 @@ import { cvData } from '../data/cv.js';
 <head>
   <BaseHead title="Education | Elisa Billard" description="Academic background." />
 </head>
-<body class="bg-white text-slate-900">
+<body class="bg-white">
   <Header />
   <main class="max-w-3xl mx-auto px-6 py-12">
-    <h1 class="text-2xl font-bold mb-10 text-slate-900">Education</h1>
+    <h1 class="mb-10">Education</h1>
     
     <div class="relative space-y-12 before:absolute before:inset-0 before:ml-1 before:-translate-x-px before:h-full before:w-0.5 before:bg-gradient-to-b before:from-slate-200 before:via-slate-200 before:to-transparent">
       {cvData.education.map(edu => (
@@ -27,24 +27,24 @@ import { cvData } from '../data/cv.js';
 
             <div class="flex-1">
               <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 mb-1">
-                <h3 class="text-lg font-bold text-slate-900 leading-tight">{edu.degree}</h3>
-                <span class="text-[10px] font-mono text-slate-400 whitespace-nowrap uppercase tracking-widest">{edu.date}</span>
+                <h3 class="leading-tight">{edu.degree}</h3>
+                <span class="text-meta">{edu.date}</span>
               </div>
               
               <div class="text-sm font-semibold text-blue-600 mb-1 uppercase tracking-tight">
-                {edu.school} {edu.gpa && <span class="text-slate-900 font-bold ml-2">Grade: {edu.gpa}</span>}
+                {edu.gpa && <span class="text-slate-900 font-bold ml-2">Grade: {edu.gpa}</span>}
               </div>
               
               {edu.specialization && (
                 <p class="text-sm text-slate-700 font-medium mb-3 italic">{edu.specialization}</p>
               )}
 
-              {/* Using solid bg-slate-50 for perfect color matching */}
+              {/* Using solid bg-slate-50 to ensure Master and Bachelor boxes match perfectly */}
               {(edu.computational || edu.biology) && (
                 <div class="grid grid-cols-1 gap-4 mt-4">
                   {edu.computational && (
                     <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
-                      <strong class="text-[10px] text-blue-600 block mb-2 uppercase tracking-widest">Engineering & Programming</strong>
+                      <strong class="text-meta text-blue-600 mb-2 block">Engineering & Programming</strong>
                       <div class="flex flex-wrap gap-x-3 gap-y-1">
                         {edu.computational.map(course => (
                           <span class="text-[11px] text-slate-600">• {course}</span>
@@ -55,7 +55,7 @@ import { cvData } from '../data/cv.js';
 
                   {edu.biology && (
                     <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
-                      <strong class="text-[10px] text-blue-600 block mb-2 uppercase tracking-widest">Life Sciences</strong>
+                      <strong class="text-meta text-blue-600 mb-2 block">Life Sciences</strong>
                       <div class="flex flex-wrap gap-x-3 gap-y-1">
                         {edu.biology.map(course => (
                           <span class="text-[11px] text-slate-600">• {course}</span>

@@ -8,10 +8,10 @@ import { cvData } from '../data/cv.js';
 <head>
   <BaseHead title="Experience | Elisa Billard" description="Professional trajectory." />
 </head>
-<body class="bg-white text-slate-900">
+<body class="bg-white">
   <Header />
   <main class="max-w-3xl mx-auto px-6 py-12">
-    <h1 class="text-2xl font-bold mb-10 text-slate-900">Professional Experience</h1>
+    <h1 class="mb-10">Professional Experience</h1>
     
     <div class="relative space-y-12 before:absolute before:inset-0 before:ml-1 before:-translate-x-px before:h-full before:w-0.5 before:bg-gradient-to-b before:from-slate-200 before:via-slate-200 before:to-transparent">
       {cvData.experience.map(job => (
@@ -27,8 +27,8 @@ import { cvData } from '../data/cv.js';
 
             <div class="flex-1">
               <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 mb-1">
-                <h3 class="text-lg font-bold text-slate-900 leading-tight">{job.title}</h3>
-                <span class="text-[10px] font-mono text-slate-400 uppercase tracking-widest">{job.date}</span>
+                <h3 class="leading-tight">{job.title}</h3>
+                <span class="text-meta">{job.date}</span>
               </div>
               
               <div class="text-sm font-semibold text-blue-600 mb-2 uppercase tracking-tight">
@@ -38,7 +38,7 @@ import { cvData } from '../data/cv.js';
               <p class="text-sm text-slate-500 leading-relaxed mb-4">{job.desc}</p>
 
               <div class="flex flex-wrap gap-3">
-                {/* Case 1: Local PDF Report */}
+                {/* Case 1: Local PDF Report - Updated to solid background */}
                 {job.report && (
                   <a href={`/${job.report}`} target="_blank" class="inline-flex items-center gap-2 text-[11px] font-bold text-slate-600 hover:text-blue-600 no-underline bg-slate-50 px-3 py-1.5 rounded border border-slate-200 transition-all">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
@@ -46,9 +46,9 @@ import { cvData } from '../data/cv.js';
                   </a>
                 )}
 
-                {/* Case 2: External Paper Link */}
+                {/* Case 2: External Paper Link - Updated to solid background */}
                 {job.link && (
-                  <a href={job.link} target="_blank" class="inline-flex items-center gap-2 text-[11px] font-bold text-blue-600 hover:text-blue-800 no-underline bg-blue-50/50 px-3 py-1.5 rounded border border-blue-100 transition-all">
+                  <a href={job.link} target="_blank" class="inline-flex items-center gap-2 text-[11px] font-bold text-blue-600 hover:text-blue-800 no-underline bg-blue-50 px-3 py-1.5 rounded border border-blue-100 transition-all">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                     VIEW PAPER
                   </a>
